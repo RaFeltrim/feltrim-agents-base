@@ -2,13 +2,14 @@
 
 > Template para comparar 2-N modelos com **input identico** e medir
 > qualidade, latencia e custo. Util quando lancar novo modelo
-> (Codex 5.4, Claude Opus 5, etc) e voce quer validar antes de adotar.
+> (proxima geracao Codex / Claude Opus / GPT / equivalente) e voce
+> quer validar antes de adotar.
 
 ## Cenario
 
-Novo modelo lancou (ex: GPT-5.5 Codex). Voce quer saber se vale trocar
-o padrao (ex: GPT-5.5 max-high) por ele em algum modo de ativacao
-(SOLO/PAR/MINI/FULL).
+Novo modelo `<NOVO_MODELO>` acabou de lancar. Voce quer saber se vale
+trocar o padrao atual `<MODELO_ATUAL>` por ele em algum modo de
+ativacao (SOLO/PAR/MINI/FULL).
 
 ## Pre-requisitos
 

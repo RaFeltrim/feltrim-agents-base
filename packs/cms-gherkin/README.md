@@ -64,6 +64,15 @@ framework Feltrim:
 | GPT-5.4 padrao | `prompts/PROMPT_GPT_5_4.md` | US generica |
 | GPT-5.4 economico | `prompts/PROMPT_GPT_5_4_ECONOMICO.md` | Lote / batch / cenarios simples |
 
+> **Nota sobre nomes de modelo:** os identificadores `GPT-5.4`,
+> `Claude Opus 4.6` e `Gemini 3.1 Pro` representam a notacao interna
+> usada quando este pack foi criado para distinguir geracoes / linhas
+> de modelo (ex.: `Codex no VS Code` linha 4.x). Substitua pelos nomes
+> reais disponiveis na sua conta no momento da execucao (ex.: `Codex`,
+> `Claude Sonnet 4.5`, `Gemini 2.5 Pro`). O comportamento esperado dos
+> prompts independe da versao especifica e deve funcionar com qualquer
+> geracao equivalente.
+
 Detalhes de economia de token em `docs/MODO-ECONOMICO-DE-TOKENS.md`.
 
 ## Ferramentas

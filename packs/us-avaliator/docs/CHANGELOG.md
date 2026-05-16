@@ -1,5 +1,42 @@
 # Changelog - Pack US Avaliator
 
+## 1.0.1 - 2026-05-16 - Sanitizacao residual (Sofia 48h audit)
+
+### Corrigido
+
+Sanitizacao adicional apos audit Sofia CIAO detectar residuos. Mudancas
+foram aplicadas na mesma data da release inicial para manter coerencia
+com a declaracao publica de pack sanitizado:
+
+- 3 ocorrencias de `30 QAs` / `~30 assinaturas` (Proposta linha 16,
+  relatorio Sofia linha 10, relatorio Pedro linha 10) -> trocadas por
+  `<N QAs>` / `<N licencas>` conforme `<estimativa-redigida>` ja
+  documentada no CHANGELOG 1.0.0.
+- 8 ocorrencias de placeholder parcial `<custo-redigido>-N/mês` ou
+  `<custo-redigido>-N` -> padronizadas para `<custo-redigido>` puro
+  (formato originalmente declarado).
+- 4 ocorrencias de placeholder inconsistente `<beta-N QAs>` /
+  `<concorrentes-N QAs>` -> padronizadas para `<N QAs subset>`.
+- "Rafael Feltrim - QA Pleno" -> "Rafael Feltrim - QA Engineer" no
+  cabecalho da Proposta e "Rafael Feltrim - QA Pleno - Studio de QA -
+  Marco 2026" -> "Rafael Feltrim - Marco 2026" no rodape, removendo
+  rank profissional especifico do empregador atual.
+- 6 mencoes de "PC dedicado" / "PC ocioso" / "PC parado" -> trocadas
+  por "servidor on-premises dedicado" / "infraestrutura local existente"
+  para nao caracterizar setup informal.
+- Mencao a hardware especifico do servidor ("RX 550 do PC", "CPU do
+  i7 3770") -> generalizada para "GPU do servidor on-premises atual" /
+  "CPU dedicada".
+
+### Decisao mantida
+
+- Autoria "Rafael Feltrim" em credits, "De:" da Proposta e rodapes
+  permanece (preservacao de IP autoral conforme
+  `governance/SECURITY_AND_PRIVACY.md`).
+- Linhas 14 e 26-27 do README e linha 14 deste CHANGELOG **citam o
+  valor original como evidencia de sanitizacao** ("antes -> depois") e
+  permanecem como documentacao de auditoria. Nao sao residuos.
+
 ## 1.0.0 - 2026-05-16 - Pack consolidado no boilerplate
 
 ### Migrado

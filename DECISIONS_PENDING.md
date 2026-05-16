@@ -121,7 +121,7 @@ activation (modos SOLO/PAR/MINI/FULL).
 
 - [ ] Medir custo real em USD/mes por modo (PAR/MINI/FULL).
 - [ ] Calibrar tabela de modelos sugeridos quando modelos novos
-  publicarem (Codex 5.4, Claude novo, GPT-5.5, etc.).
+  publicarem (proximas geracoes Codex / Claude / GPT, etc.).
 - [ ] Decidir se cria scoreboard operacional de "agentes convocados x
   contribuiram" por sessao.
 - [ ] Avaliar adicao de hard cap de tokens por modo apos 1 mes de

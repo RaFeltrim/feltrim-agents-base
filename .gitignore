@@ -29,6 +29,7 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+.cursor/
 *.swp
 *.swo
 

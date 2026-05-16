@@ -25,7 +25,7 @@ provar que funciona.
 - Testes de contrato (API)
 - Smoke tests e regressao
 - Rastreamento de bugs (severidade, prioridade, repro steps)
-- Comparacao Mainframe x Web / sistema legado x novo
+- Comparacao entre sistema legado e novo (paridade entre interfaces)
 
 ## Quando invocar
 
@@ -34,7 +34,7 @@ provar que funciona.
 - Para implementar E2E com Playwright
 - Para definir smoke tests de um deploy
 - Para analise de risco antes de release
-- Para auditar bug sumarizado: identificar se e bug, ressalva ou falha de massa
+- Para auditar bug sumarizado: identificar se e bug funcional, regressao ou comportamento esperado
 
 ## Trigger anti-patterns (quando NAO invocar)
 

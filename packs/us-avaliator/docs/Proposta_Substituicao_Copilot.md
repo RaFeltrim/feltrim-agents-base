@@ -1,9 +1,10 @@
 ﻿<!-- origem: <gherkin-manager-source>/Proposta_Final_Substituicao_Copilot.md -->
 <!-- migrada para pack us-avaliator em 2026-05-16: valores em moeda local, nomes de equipe e tamanho de time redigidos para placeholders. Autoria de Rafael Feltrim preservada apenas em credits e rodape conforme governance/SECURITY_AND_PRIVACY.md. -->
+<!-- nota sobre modelos LLM: identificadores como "GPT-5.4 nano/mini/full" representam a notacao interna usada na epoca de criacao da Proposta para distinguir geracoes/linhas de modelo (ex.: "Codex no VS Code" linha 4.x). Substitua pelos nomes reais disponiveis na sua conta no momento da execucao. -->
 
 # Proposta Executiva — Substituição das Licenças Copilot Pro por APIs de IA para o Studio de QA
 
-**De:** Rafael Feltrim — QA Pleno  
+**De:** Rafael Feltrim — QA Engineer  
 **Para:** <lider> — Liderança  
 **Data:** 24 de Março de 2026  
 **Assunto:** Substituição das <N licencas> Copilot Pro por stack de IA dedicado ao Ecossistema de Aceleradores QA  
@@ -13,7 +14,7 @@
 
 ## Resumo Executivo
 
-Proponho **cancelar as ~30 assinaturas do Copilot Pro** (usadas exclusivamente por QAs) e redirecionar o orçamento para **APIs de IA por token + um servidor Ollama local** (usando um PC ocioso que já temos), alimentando um **ecossistema de aceleradores QA** — não apenas uma ferramenta, mas uma plataforma completa.
+Proponho **cancelar as <N licencas> do Copilot Pro** (usadas exclusivamente por QAs) e redirecionar o orçamento para **APIs de IA por token + um servidor Ollama local** (usando infraestrutura local existente), alimentando um **ecossistema de aceleradores QA** — não apenas uma ferramenta, mas uma plataforma completa.
 
 **Resultado:**
 - De **~<custo-redigido>** (Copilot Pro) para **~<custo-redigido>** (APIs + servidor local mantido)
@@ -136,7 +137,7 @@ A infraestrutura de APIs não serve apenas ao Gherkin Manager. A **mesma chave d
 |:---|:---:|
 | Nova chave de API para Kanban | **<custo-redigido>** — usa a mesma chave |
 | Nova chave de API para Dashboard | **<custo-redigido>** — usa a mesma chave |
-| Chamadas extras de IA (est.) | **+<custo-redigido>-5/mês** (marginal) |
+| Chamadas extras de IA (est.) | **+<custo-redigido>** (marginal) |
 | Desenvolvimento | tempo do autor + documentação |
 
 > **Ponto-chave para o <lider>:** Estamos propondo uma **plataforma**, não uma ferramenta isolada. Cada novo acelerador que construirmos usa a mesma infraestrutura de IA já aprovada — sem custo adicional de licença, sem nova aprovação de vendor, sem novo contrato.
@@ -155,7 +156,7 @@ A infraestrutura de APIs não serve apenas ao Gherkin Manager. A **mesma chave d
 | # | Provedor | Modelo | $/1M in | $/1M out | $/chamada | <custo-mensal-redigido> (<N QAs>)¹ | Benchmark | Leitura |
 |:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
 | 1 | **Groq** ⭐ | llama-3.1-8b | $0.05 | $0.08 | $0.000052 | **<custo-redigido>** | ✅ 100/100, 1.21s | **Melhor custo-benefício** |
-| 2 | **Ollama** | Llama 3.1 8B (local) | $0 | $0 | $0 | **<custo-redigido>-430**² | Não medido | Dados ficam na empresa |
+| 2 | **Ollama** | Llama 3.1 8B (local) | $0 | $0 | $0 | **<custo-redigido>**² | Não medido | Dados ficam na empresa |
 | 3 | **Qwen** | qwen-turbo (intl) | ~$0.053 | ~$0.212 | $0.000106 | <custo-redigido> | ✅ 100/100, 11.65s | Barato, lento |
 | 4 | **Gemini** | 2.5 Flash-Lite | $0.10 | $0.40 | $0.000200 | <custo-redigido> | ✅ 100/100, 1.82s | Melhor opção Google |
 | 5 | **Groq** | qwen3-32b | $0.29 | $0.59 | $0.000352 | <custo-redigido> | ✅ 100/100, 1.40s | Bom, perde pro Llama |
@@ -188,7 +189,7 @@ Copilot Pro             <custo-redigido>   → referência
 
 ## 4. Ollama no PC Existente — Cálculo de Custo Real
 
-### Hardware Disponível (PC dedicado on-premises)
+### Hardware Disponível (servidor on-premises dedicado)
 
 | Componente | Especificação | Observação |
 |:---|:---|:---|
@@ -204,7 +205,7 @@ Copilot Pro             <custo-redigido>   → referência
 |:---|:---|:---|
 | Latência por resposta | **20-45 segundos** | Aceitável para processamento de US sensíveis |
 | Throughput | ~1-2 req/minuto | Suficiente para demanda de compliance |
-| Capacidade diária (8h) | **~80-120 requisições/dia** | Atende confortavelmente ~3-<concorrentes-N QAs> trabalhando com US sensíveis |
+| Capacidade diária (8h) | **~80-120 requisições/dia** | Atende confortavelmente <N QAs subset> trabalhando com US sensíveis |
 | Capacidade mensal | **~1.600-2.400 req/mês** | Com folga para picos de demanda |
 | Modelos suportados | Llama 3.1 8B, Qwen2 7B, Mistral 7B | Modelos compactos e eficientes |
 
@@ -227,16 +228,16 @@ Copilot Pro             <custo-redigido>   → referência
 
 ### Quando o Ollama Local Faz Sentido
 
-| Cenário | Ollama local (PC dedicado) | API cloud (Groq/Qwen) |
+| Cenário | Ollama local (on-premises) | API cloud (Groq/Qwen) |
 |:---|:---:|:---:|
 | **Compliance LGPD / dados sensíveis** | ✅ Dados nunca saem da empresa | ⚠️ Dados vão para cloud de terceiros |
 | **Custo por token** | $0 | $0.000052+ |
-| **Custo fixo mensal** | ~<custo-redigido> | ~<custo-redigido>-14 |
+| **Custo fixo mensal** | ~<custo-redigido> | ~<custo-redigido> |
 | **Latência** | 20-45s | 1.2-1.8s |
 | **Disponibilidade** | ✅ 24/7 com nobreak e manutenção técnica dedicada | ✅ SLA do provedor |
-| **Capacidade** | ~3-<concorrentes-N QAs> simultâneos (~120 req/dia) | ✅ <N QAs> simultâneos |
+| **Capacidade** | <N QAs subset> simultâneos (~120 req/dia) | ✅ <N QAs> simultâneos |
 
-> **Veredicto Ollama:** Viável como **servidor de privacidade/compliance** para USs com dados sensíveis. Complementa as APIs cloud cobrindo o gap de LGPD, com capacidade para atender ~3-<concorrentes-N QAs> por dia e folga para picos — usando um PC dedicado que já temos disponível.
+> **Veredicto Ollama:** Viável como **servidor de privacidade/compliance** para USs com dados sensíveis. Complementa as APIs cloud cobrindo o gap de LGPD, com capacidade para atender <N QAs subset> por dia e folga para picos — usando infraestrutura local existente.
 
 ---
 
@@ -247,7 +248,7 @@ Copilot Pro             <custo-redigido>   → referência
 | Camada | Solução | Dados saem da empresa? |
 |:---|:---|:---:|
 | **Processamento padrão** | Groq/Qwen/Gemini (cloud) | Sim — dados transitem pela API |
-| **Processamento sensível** | Ollama local (PC dedicado on-premises) | **Não — tudo on-premises** |
+| **Processamento sensível** | Ollama local (servidor on-premises dedicado) | **Não — tudo on-premises** |
 | **Guard-Rails** | guardrails.py (local, Python) | Não |
 | **Export CSV/HTML** | Local | Não |
 
@@ -271,7 +272,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 | Primário | Groq + llama-3.1-8b | ~<custo-redigido> |
 | Fallback pt-BR | Qwen Turbo (intl) | ~<custo-redigido> |
 | Backup | Gemini 2.5 Flash-Lite | ~<custo-redigido> |
-| **Total** | | **~<custo-redigido>-14/mês** |
+| **Total** | | **~<custo-redigido>** |
 
 ⚠️ Dados saem da empresa. Sem compliance LGPD para US sensíveis.
 
@@ -282,7 +283,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 | Primário (US normais) | Groq + llama-3.1-8b | ~<custo-redigido> |
 | Fallback pt-BR | Qwen Turbo (intl) | ~<custo-redigido> |
 | Fallback premium | Gemini 2.5 Flash-Lite | ~<custo-redigido> |
-| Sensível (LGPD) | Ollama no PC dedicado on-premises | ~<custo-redigido> |
+| Sensível (LGPD) | Ollama em servidor on-premises dedicado | ~<custo-redigido> |
 | **Total** | | **~<custo-redigido>** |
 
 ✅ Cobre compliance. Usa hardware existente. Múltiplos fallbacks.
@@ -294,7 +295,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 | Primário | GPT-5.4 nano | ~<custo-redigido> |
 | Qualidade | GPT-5.4 full | ~<custo-redigido> |
 | Fallback | Claude Sonnet 4.6 | ~<custo-redigido> |
-| **Total** | | **~<custo-redigido>-1.000/mês** |
+| **Total** | | **~<custo-redigido>** |
 
 ⚠️ Ainda mais barato que Copilot Pro, mas overkill para BDD estruturado.
 
@@ -302,7 +303,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 
 | Componente | Provedor | <custo-mensal-redigido> |
 |:---|:---|:---:|
-| Único | Ollama no PC dedicado on-premises | ~<custo-redigido> |
+| Único | Ollama em servidor on-premises dedicado | ~<custo-redigido> |
 | **Total** | | **~<custo-redigido>** |
 
 ✅ Zero dados na nuvem. ⚠️ Latência alta (20-45s). ⚠️ Não atende <N QAs> simultâneos.
@@ -384,7 +385,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 | **Sprint 1** | 1-2 | Fix encoding, testes unitários, CI (GitHub Actions) | Nenhuma | <custo-redigido> |
 | **Sprint 2** | 3-4 | FastAPI + integração Groq/Qwen + Ollama no PC | APIs aprovadas | <custo-redigido> |
 | **Sprint 3** | 5-6 | Extensão Chrome (Manifest V3) + Side Panel | Sprint 2 | <custo-redigido> |
-| **Sprint 4** | 7-8 | Beta com <beta-N QAs> + documentação completa de manutenção | Sprint 3 | <custo-redigido> |
+| **Sprint 4** | 7-8 | Beta com <N QAs subset> + documentação completa de manutenção | Sprint 3 | <custo-redigido> |
 | **Rollout** | 9-10 | Distribuição para os <N QAs> + cancelamento Copilot Pro | Beta OK | **-<custo-redigido>** |
 
 > **Sprint 1 pode começar amanhã sem nenhum custo ou aprovação.** O cancelamento do Copilot Pro só ocorre após o rollout bem-sucedido (Sprint 5), eliminando risco de ficar sem ferramenta.
@@ -395,8 +396,8 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 
 | # | Solicitação | Impacto | Custo |
 |:---:|:---|:---|:---:|
-| 1 | Aprovar uso das APIs cloud (Groq/Qwen/Gemini) | Habilita IA no Gherkin Manager | **<custo-redigido>-14/mês** |
-| 2 | Autorizar uso do PC parado como servidor Ollama | Cobre compliance LGPD | **~<custo-redigido>-144/mês** (energia) |
+| 1 | Aprovar uso das APIs cloud (Groq/Qwen/Gemini) | Habilita IA no Gherkin Manager | **<custo-redigido>** |
+| 2 | Autorizar uso de servidor on-premises dedicado para Ollama | Cobre compliance LGPD | **~<custo-redigido>** (energia) |
 | 3 | Alocar 4 sprints de desenvolvimento (8 semanas) | Entrega a solução completa | tempo do autor |
 | 4 | Avaliar cancelamento das <N licencas> Copilot Pro | Libera <custo-redigido> | **-<custo-redigido>** |
 | 5 | Definir ownership conjunto (Rafael + <lider>) | Garante continuidade | Documentação |
@@ -410,7 +411,7 @@ O roteamento pode ser manual (QA escolhe) ou automatizado (Guard-Rails detectam 
 - As chaves de API utilizadas nos benchmarks eram pessoais do Rafael, para fins de teste. A empresa precisará provisionar suas próprias chaves
 - A chave Gemini pessoal estava com quota esgotada. Os benchmarks Gemini foram feitos com o modelo `gemini-2.5-flash-lite`
 - A conta Qwen está na região **internacional** do Alibaba Cloud. O endpoint obrigatório é `dashscope-intl.aliyuncs.com` (não o da China)
-- O RX 550 do PC não suporta aceleração de GPU para IA (sem ROCm/CUDA). A IA rodará em CPU do i7 3770, resultando em latência de ~20-45s por resposta. Um upgrade futuro com SSD (~<custo-redigido>) e/ou GPU NVIDIA usada (~<custo-redigido>-800) melhoraria significativamente a performance
+- A GPU do servidor on-premises atual não suporta aceleração para IA (sem ROCm/CUDA). A IA rodará em CPU dedicada, resultando em latência de ~20-45s por resposta. Um upgrade futuro com SSD (~<custo-redigido>) e/ou GPU NVIDIA usada (~<custo-redigido>) melhoraria significativamente a performance
 
 ---
 
@@ -442,7 +443,7 @@ Todos os benchmarks foram executados no dia 24/03/2026 diretamente no repositór
 
 **Fico à disposição para apresentar o relatório técnico completo e iniciar a Sprint 1 imediatamente.**
 
-*Rafael Feltrim — QA Pleno · Studio de QA · Março 2026*  
+*Rafael Feltrim · Março 2026*  
 *<lider> — Liderança · Co-Owner*
 
 ---

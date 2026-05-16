@@ -17,7 +17,8 @@ Os rituais simulam coesao, amizade operacional, confianca de trabalho e cultura 
 - `../agents/time-scale.md` — convencao simbolica de escala temporal: 1 dia humano equivale a 1 hora operacional dos agentes para rituais, cultura e gamificacao.
 - `pre-daily.md` — ritual diario de 5-10 min antes da daily tecnica.
 - `feature-init.md` — **ritual lean** (PAR/MINI) para iniciar feature sem convocar squad completa. Default recomendado para 80% das features.
-- `team-call-notes-template.md` — modelo de ata para calls com Rafael, time e agentes.
+- `team-call.md` — **ritual FULL** para Go/No-Go, pos-incidente, decisao arquitetural ou auditoria de seguranca. Custo alto, so quando justificado.
+- `team-call-notes-template.md` — modelo de ata para registrar `team-call.md`.
 - `flash-talks.md` — cafes da tarde, snack breaks e flash talks leves para descanso, curiosidade e baseline RPA.
 - `snack-break-notes-template.md` — modelo simples para registrar aprendizados leves de encontros com snacks, sem decisoes tecnicas.
 - `game-nights.md` — ritual opcional de jogos fora do expediente para coesao, fair play e XP simbolico de coleguismo.
@@ -36,8 +37,8 @@ Os rituais simulam coesao, amizade operacional, confianca de trabalho e cultura 
 | Typo, copy, margin, lint, refactor local | (nenhum ritual) | SOLO | 1 agente especialista |
 | Bug fix, feature pequena/media | `feature-init.md` | PAR / MINI | GP + Dev + QA (3 agentes) |
 | Sync diario do time | `pre-daily.md` | PAR / MINI | quem esta ativo no sprint |
-| Decisao multi-area com C4/contrato | `team-call-notes-template.md` (ata) | MINI / FULL | so agentes relevantes |
-| Release / Go-Live / pos-incidente / arquitetura nova | `team-call-notes-template.md` (ata) | **FULL** | toda a squad ativa |
+| Decisao multi-area com C4/contrato | `team-call.md` + `team-call-notes-template.md` | MINI / FULL | so agentes relevantes |
+| Release / Go-Live / pos-incidente / arquitetura nova | `team-call.md` + `team-call-notes-template.md` | **FULL** | toda a squad ativa |
 | Brainstorm de novo produto | `monthly-hackathons.md` | FULL | toda a squad + convidados |
 | Aprendizado leve / curiosidade | `flash-talks.md` | SOLO / PAR | quem quiser participar |
 
