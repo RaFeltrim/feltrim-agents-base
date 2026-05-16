@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install markdownlint-cli2
         run: npm install -g markdownlint-cli2
@@ -68,11 +67,16 @@ jobs:
               --glob '!*.lock' \
             || (echo "FAIL: absolute paths found"; exit 1)
 
-      - name: Check for committed .env
+      - name: Check for committed .env (excluding .env.example)
         run: |
-          echo "Checking for committed .env files..."
-          ! git ls-files | grep -E "^\.env$|^\.env\.[a-z]+$" \
-            || (echo "FAIL: real .env file committed"; exit 1)
+          echo "Checking for committed .env files (excluding .env.example)..."
+          bad_env=$(git ls-files | grep -E "^\.env$|^\.env\.[a-z]+$" | grep -vE "^\.env\.example$" || true)
+          if [ -n "$bad_env" ]; then
+            echo "FAIL: real .env file(s) committed:"
+            echo "$bad_env"
+            exit 1
+          fi
+          echo "OK: no real .env files committed"
 
       - name: Check for API keys / tokens in committed files
         run: |
@@ -114,7 +118,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install markdown-link-check
         run: npm install -g markdown-link-check
