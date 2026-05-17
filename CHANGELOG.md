@@ -7,6 +7,20 @@ este projeto adere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Adicionado
+
+- **Shift-left pre-commit hooks** que espelham 1:1 os 4 jobs do CI:
+  - `.pre-commit-config.yaml` - config principal (markdownlint, higiene de
+    arquivos, flag-words, structure, link-check opt-in).
+  - `scripts/check-flag-words.sh` + `.ps1` - sanitizacao local (paths
+    absolutos, .env real, secrets, email policy).
+  - `scripts/check-structure.sh` - arquivos e diretorios obrigatorios + count
+    minimo de gens (>=15) e protocolos (>=8).
+  - `scripts/check-links.sh` - markdown link check (manual stage, opt-in).
+  - `scripts/README.md` - inventario e instrucoes.
+- Secao "Checagem local antes do push (shift-left)" reescrita no
+  `CONTRIBUTING.md` com setup e uso diario.
+
 ### Em desenvolvimento
 
 - Calibracao da `AGENT_ACTIVATION_POLICY.md` apos 1 mes de uso real.

@@ -71,20 +71,65 @@ feat(core): add gem_cleber_mobile com unlock host-flash-talk
 - Marque a checklist de sanitizacao - se o item nao se aplica, deixe explicito.
 - Resposta a review: corrigir e re-pedir review, nao discutir.
 
-## Checagem local antes do push
+## Checagem local antes do push (shift-left)
+
+O repositorio tem pre-commit hooks que espelham 1:1 os jobs do CI. Instalar
+uma vez evita o ciclo "push - CI vermelho - fix - push de novo" para erros
+triviais (lint, link quebrado, placeholder vazado, email corporativo).
+
+### Setup (uma vez por clone)
 
 ```bash
-# 1. Palavras-bandeira da sua instalacao (manter lista privada fora do repo)
-rg -i "(<sua-lista-de-flag-words>)" core/ governance/ examples/ docs/ README.md
-
-# 2. Sanity check de links markdown
-# (usar markdown-link-check ou ferramenta equivalente)
-
-# 3. Confirmar que .env nao esta staged
-git diff --cached --name-only | grep -E "^\.env$" && echo "ABORT: .env esta staged" && exit 1
+pip install pre-commit
+pre-commit install
 ```
 
-O workflow em `.github/workflows/ci.yml` roda essas checagens automaticamente em todo PR.
+### Uso diario
+
+```bash
+git commit -m "feat(core): add gem_nova"   # hooks rodam automaticamente
+
+# Forcar rodar em todos arquivos (nao so o diff):
+pre-commit run --all-files
+
+# Rodar so 1 hook:
+pre-commit run markdownlint --all-files
+
+# Rodar o link-check (opt-in, mais lento, bate em rede):
+pre-commit run markdown-link-check --hook-stage manual --all-files
+
+# Emergencia (NAO recomendado, prefira corrigir):
+git commit --no-verify
+```
+
+### Scripts invocaveis direto (sem pre-commit)
+
+```bash
+bash scripts/check-flag-words.sh    # sanitizacao (job CI 2)
+bash scripts/check-structure.sh     # arquivos obrigatorios (job CI 4)
+bash scripts/check-links.sh         # links markdown (job CI 3, opt-in)
+```
+
+Equivalente PowerShell (Windows, sem Git Bash):
+
+```powershell
+pwsh scripts/check-flag-words.ps1
+```
+
+### Dependencias
+
+| Tool | Para que | Instalar |
+|------|----------|----------|
+| `pre-commit` | Framework de hooks | `pip install pre-commit` |
+| `ripgrep` (rg) | Flag-words check | `choco install ripgrep` / `brew install ripgrep` / `apt install ripgrep` |
+| `markdown-link-check` | Link check | `npm install -g markdown-link-check` |
+| `markdownlint-cli2` | Markdown lint | gerenciado automaticamente pelo `pre-commit` |
+
+Veja `scripts/README.md` para detalhe de cada script.
+
+O workflow em `.github/workflows/ci.yml` continua sendo a fonte de verdade -
+em divergencia entre local e CI, o CI bloqueia o merge. Os scripts locais so
+antecipam a falha.
 
 ## Boot rapido para revisores
 
